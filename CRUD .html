@@ -31,7 +31,6 @@
     </div>
 
     <div class="container">
-        <!-- Form Tambah Data -->
         <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">Tambah Data Siswa</h5>
@@ -53,8 +52,7 @@
             </div>
         </div>
 
-        <!-- Daftar Siswa -->
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Daftar Siswa</h5>
                 <table class="table table-striped table-hover">
@@ -69,15 +67,6 @@
                     </thead>
                     <tbody id="dataSiswa"></tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- Fitur Lihat Semua Data -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Lihat Semua Data</h5>
-                <button id="lihatData" class="btn btn-secondary mb-3" onclick="lihatData()">Lihat Semua Data</button>
-                <div id="dataOutput"></div>
             </div>
         </div>
     </div>
@@ -134,24 +123,6 @@
                 localStorage.setItem('siswaList', JSON.stringify(siswaList));
                 renderSiswa();
             }
-        }
-
-        function lihatData() {
-            const data = localStorage.getItem('siswaList');
-            const siswaList = data ? JSON.parse(data) : [];
-
-            let html = '<table class="table table-bordered"><tr><th>#</th><th>Nama</th><th>Kelas</th><th>Alamat</th></tr>';
-            siswaList.forEach((siswa, index) => {
-                html += `<tr>
-                            <td>${index + 1}</td>
-                            <td>${siswa.nama}</td>
-                            <td>${siswa.kelas}</td>
-                            <td>${siswa.alamat}</td>
-                         </tr>`;
-            });
-            html += '</table>';
-
-            document.getElementById('dataOutput').innerHTML = html;
         }
 
         formSiswa.addEventListener('submit', addSiswa);
